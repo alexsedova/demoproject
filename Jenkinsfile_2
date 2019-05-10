@@ -1,0 +1,15 @@
+node {
+    checkout scm
+    stage('Build') {
+        printInfo()
+        sh 'gradle build'
+    }
+}
+
+def printInfo() {
+    if(env.BRANCH_NAME == 'master') {
+        echo 'I'm goint to build master'
+    } else {
+        echo "I'm building ${env.BRANCH_NAME}"
+    }
+}
