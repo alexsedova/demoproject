@@ -5,14 +5,13 @@ import org.junit.Test
 /**
  *
  */
-class JenkinsfileTest extends BasePipelineTest {
+class JenkinsfileTwoTest extends BasePipelineTest {
     def script
     @Override
     @Before
     void setUp() throws Exception {
         super.setUp()
         def scmBranch = "feature_test"
-        script = loadScript('Jenkinsfile')
         //helper.registerAllowedMethod("sh", [Map.class], {c -> 'bcc19744'})
         binding.setVariable('env', ['BRANCH_NAME':'master'])
         binding.setVariable('scm', [
@@ -24,14 +23,16 @@ class JenkinsfileTest extends BasePipelineTest {
     @Test
     void should_execute_without_errors() throws Exception {
         //def script = loadScript("Jenkinsfile")
-        script.execute()
+        //script.execute()
+        runScript('JenkinsfileTwo')
         printCallStack()
     }
 
     @Test
     void  try_not_master_branch() throws Exception {
         binding.setVariable('env', ['BRANCH_NAME' : 'test'])
-        script.execute()
+        script = loadScript('JenkinsfileTwo')
+        assert script.printInfo() == "I'm building test"
         printCallStack()
     }
 }
