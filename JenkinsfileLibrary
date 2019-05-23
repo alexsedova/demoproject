@@ -1,9 +1,16 @@
-@Library('common-library') _
+#!groovy
 
-node {
-    checkout scm
+@Library('common-library@master') _
+
+def utils = new jenkins.utils.Utilities(this)
+
+node() {
+    stage('Clone and checkout') {
+        checkout scm
+    }
+
     stage('Build') {
         echo printInfo(name: env.BRANCH_NAME)
-        sh 'gradle build'
+        utils.runBuild(env.BRANCH_NAME)
     }
 }

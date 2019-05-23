@@ -2,6 +2,7 @@ import com.lesfurets.jenkins.unit.BasePipelineTest
 import com.lesfurets.jenkins.unit.global.lib.LocalSource
 
 import static com.lesfurets.jenkins.unit.global.lib.LibraryConfiguration.library
+import static org.junit.Assert.*
 
 import org.junit.Before
 import org.junit.Test
@@ -18,10 +19,6 @@ class JenkinsfileLibraryTest extends BasePipelineTest {
         helper.registerAllowedMethod("sh", [Map.class], {c -> 'bcc19744'})
         binding.setVariable('env', ['BRANCH_NAME':'master'])
         binding.setVariable('scm', null)
-    }
-
-    @Test
-    void check_if_method_loaded() {
         String clonePath = 'out/library'
         def library = library()
                 .name('common-library')
@@ -33,7 +30,10 @@ class JenkinsfileLibraryTest extends BasePipelineTest {
                 .build()
 
         helper.registerSharedLibrary(library)
+    }
 
+    @Test
+    void check_if_method_loaded() {
         runScript(scriptPath)
         printCallStack()
     }
