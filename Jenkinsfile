@@ -5,12 +5,18 @@ node {
     }
 
     stage('Build') {
-        if(env.BRANCH_NAME == 'master') {
-            echo "I'm going to build on master"
-        } else {
-            echo "I'm going to build on ${env.BRANCH_NAME}"
-        }
+        printInfo()
         sh 'gradle build'
     }
+}
+
+def printInfo() {
+    def message
+    if(env.BRANCH_NAME == 'master') {
+        message = "I'm going to build on master"
+    } else {
+        message = "I'm going to build on ${env.BRANCH_NAME}"
+    }
+    return message
 }
 

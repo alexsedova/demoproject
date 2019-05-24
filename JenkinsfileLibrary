@@ -1,8 +1,6 @@
 #!groovy
 
-@Library('common-library@master') _
-
-def utils = new jenkins.utils.Utilities(this)
+@Library('common-library') _
 
 node() {
     stage('Clone and checkout') {
@@ -11,6 +9,6 @@ node() {
 
     stage('Build') {
         echo printInfo(name: env.BRANCH_NAME)
-        utils.runBuild(env.BRANCH_NAME)
+        runBuild(name: env.BRANCH_NAME)
     }
 }
