@@ -6,7 +6,7 @@ node {
 
     stage('Build') {
         printInfo()
-        sh 'gradle build'
+        sh "echo 'kalle anka'"
     }
 }
 
