@@ -1,12 +1,25 @@
-node {
 
-    stage('Clone and checkout') {
-        checkout scm
+pipeline {
+    stages {
+        stage('Clone and checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('build') {
+            steps {
+                sh "echo 'kalle anka'"
+            }
+        }
     }
-
-    stage('Build') {
-        printInfo()
-        sh "echo 'kalle anka'"
+    post {
+        always {
+            echo "pipeline run"
+        }
+        failure{
+            echo "Ooops"
+        }
     }
 }
 
