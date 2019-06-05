@@ -6,3 +6,7 @@ gradle*
 *.xml
 build/
 out/*
+bin/
+.classpath
+.project
+.settings

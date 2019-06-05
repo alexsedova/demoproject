@@ -27,4 +27,8 @@ class Demo {
     def summ() {
         return one + two + three
     }
+
+    def print() {
+        println "Kalle Anka"
+    }
 }
