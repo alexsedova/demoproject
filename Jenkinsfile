@@ -10,7 +10,7 @@ pipeline {
 
         stage('build') {
             steps {
-                sh "echo 'kalle anka'"
+                sh "echo 'kalle anka sitter på en planka'"
             }
         }
     }
