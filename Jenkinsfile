@@ -1,5 +1,4 @@
 node {
-
     stage('Clone and checkout') {
         checkout scm
     }
