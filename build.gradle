@@ -12,12 +12,12 @@ dependencies {
     testCompile ('org.spockframework:spock-core:1.1-groovy-2.4') {
         exclude group: 'org.codehaus.groovy'
     }
-    testCompile group: 'junit', name: 'junit', version: '4.4'
-    testCompile group:'com.lesfurets', name:'jenkins-pipeline-unit', version:'1.1'
-    //testCompile 'com.praqma:jenkins-pipeline-test-library:1.0.0'
-    implementation('com.swedbank:jenkins-pipeline-test') {
-        version {
-            branch = 'master'
-        }
-    }
+    //testCompile group: 'junit', name: 'junit', version: '4.4'
+    //testCompile group:'com.lesfurets', name:'jenkins-pipeline-unit', version:'1.1'
+    testCompile 'com.swedbank:jenkins-pipeline-test:unspecified'
+//    testImplementation('com.swedbank:jenkins-pipeline-test') {
+//        version {
+//            branch = 'master'
+//        }
+//    }
 }

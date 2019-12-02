@@ -1,21 +1,31 @@
-node {
-    stage('Clone and checkout') {
-        checkout scm
+pipeline {
+    agent any
+    stages {
+        stage ('Clone') {
+            steps {
+                checkout scm
+            }
+        }
+        stage ('Build') {
+            steps {
+                sh 'gradle build'
+             }
+        }
+        stage ('Test') {
+             steps {
+                sh 'gradle test'
+             }
+        }
     }
-
-    stage('Build') {
-        printInfo()
-        sh 'gradle build'
+    post {
+        always {
+            script {
+                if(env.BRANCH_NAME == 'master') {
+                    echo 'I built on master'
+                } else {
+                    echo "I built on ${env.BRANCH_NAME}"
+                }
+            }
+        }
     }
 }
-
-def printInfo() {
-    def message
-    if(env.BRANCH_NAME == 'master') {
-        message = "I'm going to build on master"
-    } else {
-        message = "I'm going to build on ${env.BRANCH_NAME}"
-    }
-    return message
-}
-
