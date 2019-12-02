@@ -1,29 +1,25 @@
+@Library('common-library') _
 pipeline {
     agent any
     stages {
-        stage ('Clone') {
+        stage('one') {
             steps {
-                checkout scm
+                script {
+                    echo printMessage([message : 'Blaa'])
+                }
             }
         }
-        stage ('Build') {
+        stage('two') {
             steps {
-                sh 'gradle build'
-             }
+                script{
+                    testMethod()
+                }
+            }
         }
-        stage ('Test') {
-             steps {
-                sh 'gradle test'
-             }
-        }
-    }
-    post {
-        always {
-            script {
-                if(env.BRANCH_NAME == 'master') {
-                    echo 'I built on master'
-                } else {
-                    echo "I built on ${env.BRANCH_NAME}"
+        stage('three') {
+            steps {
+                script{
+                    runTask()
                 }
             }
         }
