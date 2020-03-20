@@ -1,4 +1,3 @@
-// This is master
 node {
     stage('Clone and checkout') {
         checkout scm
@@ -7,6 +6,10 @@ node {
     stage('Build') {
         printInfo()
         sh 'gradle build'
+    }
+    
+    stage("Test") {
+    	println "test"
     }
 }
 
