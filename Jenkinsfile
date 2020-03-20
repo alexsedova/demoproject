@@ -1,4 +1,4 @@
-// This is master
+// This belongs teamB
 node {
     stage('Clone and checkout') {
         checkout scm
