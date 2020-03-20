@@ -1,3 +1,4 @@
+// This belongs team A
 node {
     stage('Clone and checkout') {
         checkout scm
