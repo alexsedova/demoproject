@@ -11,6 +11,10 @@ node {
     stage("Test") {
     	println "test"
     }
+
+    stage("Print") {
+       println "New line"
+    }
 }
 
 def printInfo() {
